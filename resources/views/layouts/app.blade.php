@@ -13,6 +13,7 @@
 
 <body>
     <div class="container">
+
         <div class="navigation">
             <ul>
                 <li>
@@ -99,6 +100,7 @@
 
             </ul>
         </div>
+
     </div>
 
     <div class="main">
@@ -107,13 +109,19 @@
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
         </div>
+        @yield('content')
+
     </div>
+
+
 
     <!-- ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </body>
 
 
