@@ -7,6 +7,7 @@ export default defineConfig({
     resolve: {
         alias: {
             'vue': path.resolve(__dirname, 'node_modules/vue/dist/vue.esm-bundler.js'), // Alias Vue to the full build
+            
         },
     },
     plugins: [
