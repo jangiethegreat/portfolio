@@ -1,20 +1,55 @@
 /* fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Palatino+Linotype:wght@400;700&display=swap'); /* Import Palatino Linotype */
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playwrite+BE+VLG:wght@100..400&family=Zain:wght@200;300;400;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=Playwrite+BE+VLG:wght@100..400&family=Zain:wght@200;300;400;700;800;900&display=swap');
 /* =======globals=========== */
-*{
-    font-family: "Ubuntu", sans-serif;
+* {
+    font-family: var( --font-poppins), sans-serif; /* Default to Ubuntu font */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --blue: #2a2185;
     --white: #fff;
+    --white-text: #fff;
     --gray: #f5f5f5;
     --black1: #222;
     --black2: #999;
+    --primary-color: #000;
+    --primary-color-dark: #000;
+    --secondary-color: #ca8a04;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --extra-light: #faf5ff;
+    --black:#000;
+    --neumorph-shadow-light: rgba(255, 255, 255, 1); /* Default light shadow */
+    --neumorph-shadow-dark-mode-light: rgba(255, 255, 255, 0.1);
+    --light-bg: #e0e0e0;
+    --light-shadow: #ffffff;
+    --dark-shadow: #a3a3a3;
+    --text-color: #333;
+    --accent-color: #4caf50;
+
+
+
+    --max-width: 1200px;
+    --font-palatino: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; /* Define variable for Palatino Linotype */
+    --font-ubuntu: 'Ubuntu', sans-serif; /* Define variable for Ubuntu font */
+    --font-poppins: 'Poppins', sans-serif; /* Define variable for Poppins font */
+    --font-playfair: 'Playfair Display', serif; /* Define variable for Playfair Display font */
+    --font-anton:"Anton", sans-serif;
+    --font-playwrite: 'Playwrite BE VLG', sans-serif;
+    --font-pacifico: 'Pacifico', cursive;
+
+    --side-nav:#333;
 }
 
 body{
@@ -31,8 +66,8 @@ body{
     position: fixed;
     width:300px;
     height:100%;
-    background: var(--blue);
-    border-left:10px solid var(--blue);
+    background: var(--side-nav);
+    border-left:10px solid var(--side-nav);
     transition: 0.5s;
     overflow:hidden;
 }
@@ -57,7 +92,7 @@ body{
 }
 .navigation ul li:hover,
 .navigation ul li.hovered{
-    background-color: var(--white);
+    background-color: var(--extra-light);
 
 }
 .navigation ul li:nth-child(1) {
@@ -69,11 +104,11 @@ body{
     display: flex;
     width: 100%;
     text-decoration: none;
-    color: var(--white);
+    color: var(--white-text);
 }
 .navigation ul li:hover a,
 .navigation ul li.hovered a{
-    color: var(--blue);
+    color: var(--text-dark);
 }
 
 .navigation ul li a .icon{
@@ -110,7 +145,7 @@ body{
     height:50px;
     background-color: transparent;
     border-radius: 50%;
-    box-shadow: 35px 35px 0 10px var(--white);
+    box-shadow: 35px 35px 0 10px var(--extra-light);
     pointer-events: none;
 }
 
@@ -124,7 +159,7 @@ body{
     height:50px;
     background-color: transparent;
     border-radius: 50%;
-    box-shadow: 35px -35px 0 10px var(--white);
+    box-shadow: 35px -35px 0 10px var(--extra-light);
     pointer-events: none;
 }
 
@@ -135,7 +170,7 @@ body{
     width: calc(100% - 300px);
     left: 300px;
     min-height:100vh;
-    background-color: var(--white);
+    background-color: var(--extra-light);
     transition: 0.5s; 
 }
 .main.active{
@@ -150,6 +185,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    color: var(--text-dark);
 }
 .toggle{
     position: relative;
@@ -160,4 +196,82 @@ body{
     align-items: center;
     font-size: 2.5rem;
     cursor: pointer;
+}
+/* Dark Mode*/
+#toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: all 0.5s ease-in;
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#toggle::before,
+#toggle::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    transition: all 0.5s ease-in;
+    
+}
+
+#toggle::before {
+    background-image: url('/images/moon.png'); /* Sun image */
+
+
+}
+
+#toggle::after {
+    background-image: url('/images/sunny.png'); /* Sun image */
+    opacity: 0;
+   
+
+
+}
+
+#toggle:checked::before {
+    opacity: 0;
+}
+
+#toggle:checked::after {
+    opacity: 1;
+    
+}
+
+
+  .dark-mode {
+    --primary-color: #fff; /* Light Purple */
+    --primary-color-dark: #f1f5f9; 
+    --secondary-color: #facc15; /* Bright Yellow */
+    --text-dark: #f1f5f9; /* Light Gray */
+    --text-light: #f1f5f9; /* Medium Gray */
+    --extra-light: #333; /* Dark Background */
+    --white-text:#000;
+    --side-nav:#faf5ff;
+
+
+
+    --light-bg: #2b2b2b;
+    --light-shadow: #3c3c3c;
+    --dark-shadow: #1a1a1a;
+    --text-color: #f0f0f0;
+    --accent-color: #4caf50;
+    --neumorph-shadow-light: rgba(0, 0, 0, 0.15); /* Default light shadow */
+    --neumorph-shadow-dark-mode-light: rgba(0, 0, 0, 0.5);;
 }
